@@ -1,0 +1,83 @@
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		  HashMap<String,Integer> hm1=new HashMap<>();
+		  Scanner scan=new Scanner(System.in); 
+		  System.out.println("     PROVIDE YOUR INFORMATION");
+		  int con_exit=1;
+		  String veg="";
+		  int price=0;
+    	 while(con_exit==1)
+        	 {
+                System.out.println("enter the vegetable pr fruit");
+            	veg=scan.next();
+        		System.out.println("enter the price");
+        		price=scan.nextInt();
+        		hm1.put(veg,price);
+            	 System.out.println("enter 1 for next and 0 to exit providing information ");
+            	con_exit=scan.nextInt();
+        	}
+            int[] arr=new int[hm1.size()];
+            int index=0;
+            System.out.println("inside making arr");
+             for(Map.Entry<String,Integer> e:hm1.entrySet())
+                {
+                    arr[index]=e.getValue();
+                    index=index+1;
+                }
+            System.out.println(Arrays.toString(arr));
+           index=0;
+                while(!hm1.isEmpty())
+                    {
+                        int temp=arr[index];
+                        System.out.println("the vegetables with temp value "+temp+" are");
+                        for(Map.Entry<String,Integer> e:hm1.entrySet())
+                        {
+                            
+                            if(temp==e.getValue())
+                                {
+                                    System.out.println("inside if function loop ");
+                                    System.out.println(e.getKey());
+                                    hm1.remove(e.getKey());
+                                }
+                            else
+                                {
+                                    System.out.println("inside else function loop ");
+                                }
+                        }
+                        index=index+1;
+                    }
+        	
+    		int total=0;
+    		System.out.println("     BILLING");
+    		con_exit=1;
+    		while(con_exit==1)
+    		{
+        		
+        		System.out.print("vegetable bought:");
+        		veg=scan.next();
+        		System.out.println("quantity");
+        		int quantity=scan.nextInt();
+        		total=(quantity)*(hm1.get(veg))+total;
+        		System.out.println("total amt:"+total);
+        		System.out.println("enter 1 for next and 0 to exit billing ");
+        		con_exit=scan.nextInt();
+    		}
+    	 	
+    		
+		    
+	}
+}
+
+
+
+
+
+
+
+
+
